@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21BAF41A0D62A8D400C18B91 /* RoRGate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4180D62A8D400C18B91 /* RoRGate.nib */; };
+		21BAF41D0D62A8FC00C18B91 /* Gate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF41B0D62A8FC00C18B91 /* Gate.nib */; };
+		21BAF41F0D62A91500C18B91 /* GateController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF41E0D62A91500C18B91 /* GateController.rb */; };
+		21BAF4220D62A92500C18B91 /* GateIconView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4200D62A92500C18B91 /* GateIconView.rb */; };
+		21BAF4230D62A92500C18B91 /* RoRGateController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4210D62A92500C18B91 /* RoRGateController.rb */; };
+		21BAF4250D62A98900C18B91 /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
+		21BAF4260D62A99C00C18B91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		21BAF4270D62A9A900C18B91 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		21BAF4280D62A9A900C18B91 /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */; };
+		21BAF44C0D62B32900C18B91 /* prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF44B0D62B32900C18B91 /* prefs.plist */; };
+		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
+		4DDCA70A0ACC9A6100E082CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		4DDCA70C0ACC9A6100E082CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		4DDCA70D0ACC9A6100E082CE /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21BAF4330D62AA0300C18B91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21BAF40B0D62A82A00C18B91;
+			remoteInfo = Gate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		21BAF40C0D62A82A00C18B91 /* Gate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		21BAF40E0D62A82A00C18B91 /* Gate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gate-Info.plist"; sourceTree = "<group>"; };
+		21BAF4190D62A8D400C18B91 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/RoRGate.nib; sourceTree = "<group>"; };
+		21BAF41C0D62A8FC00C18B91 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Gate.nib; sourceTree = "<group>"; };
+		21BAF41E0D62A91500C18B91 /* GateController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GateController.rb; sourceTree = "<group>"; };
+		21BAF4200D62A92500C18B91 /* GateIconView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GateIconView.rb; sourceTree = "<group>"; };
+		21BAF4210D62A92500C18B91 /* RoRGateController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = RoRGateController.rb; sourceTree = "<group>"; };
+		21BAF44B0D62B32900C18B91 /* prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = prefs.plist; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		4DDCA7110ACC9A6100E082CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DDCA7120ACC9A6100E082CE /* RoRGate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoRGate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /System/Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
+		E8F5E25803AEB7C803A81C6F /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		21BAF40A0D62A82A00C18B91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21BAF4270D62A9A900C18B91 /* Cocoa.framework in Frameworks */,
+				21BAF4280D62A9A900C18B91 /* RubyCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DDCA70B0ACC9A6100E082CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DDCA70C0ACC9A6100E082CE /* Cocoa.framework in Frameworks */,
+				4DDCA70D0ACC9A6100E082CE /* RubyCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DDCA7120ACC9A6100E082CE /* RoRGate.app */,
+				21BAF40C0D62A82A00C18B91 /* Gate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		21BAF4130D62A85500C18B91 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				21BAF4200D62A92500C18B91 /* GateIconView.rb */,
+				21BAF4210D62A92500C18B91 /* RoRGateController.rb */,
+				21BAF41E0D62A91500C18B91 /* GateController.rb */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		21BAF4140D62A85A00C18B91 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				21BAF44B0D62B32900C18B91 /* prefs.plist */,
+				21BAF41B0D62A8FC00C18B91 /* Gate.nib */,
+				21BAF4180D62A8D400C18B91 /* RoRGate.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* RoRGate */ = {
+			isa = PBXGroup;
+			children = (
+				21BAF4140D62A85A00C18B91 /* Resources */,
+				21BAF4130D62A85500C18B91 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				4DDCA7110ACC9A6100E082CE /* Info.plist */,
+				21BAF40E0D62A82A00C18B91 /* Gate-Info.plist */,
+			);
+			name = RoRGate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				E8F5E25803AEB7C803A81C6F /* rb_main.rb */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4DDCA7040ACC9A6100E082CE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		21BAF40B0D62A82A00C18B91 /* Gate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21BAF4110D62A82B00C18B91 /* Build configuration list for PBXNativeTarget "Gate" */;
+			buildPhases = (
+				21BAF4080D62A82A00C18B91 /* Resources */,
+				21BAF4090D62A82A00C18B91 /* Sources */,
+				21BAF40A0D62A82A00C18B91 /* Frameworks */,
+				21BAF4600D62BE7F00C18B91 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gate;
+			productName = Gate;
+			productReference = 21BAF40C0D62A82A00C18B91 /* Gate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DDCA7030ACC9A6100E082CE /* RoRGate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DDCA70E0ACC9A6100E082CE /* Build configuration list for PBXNativeTarget "RoRGate" */;
+			buildPhases = (
+				4DDCA7040ACC9A6100E082CE /* Headers */,
+				4DDCA7050ACC9A6100E082CE /* Resources */,
+				4DDCA7090ACC9A6100E082CE /* Sources */,
+				4DDCA70B0ACC9A6100E082CE /* Frameworks */,
+				21BAF47C0D62C6B600C18B91 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21BAF4340D62AA0300C18B91 /* PBXTargetDependency */,
+			);
+			name = RoRGate;
+			productInstallPath = "$(HOME)/Applications";
+			productName = RoRGate;
+			productReference = 4DDCA7120ACC9A6100E082CE /* RoRGate.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 4D7A7B570ABF745500C2D4C0 /* Build configuration list for PBXProject "RoRGate" */;
+			compatibilityVersion = "Xcode 3.0";
+			hasScannedForEncodings = 0;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* RoRGate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DDCA7030ACC9A6100E082CE /* RoRGate */,
+				21BAF40B0D62A82A00C18B91 /* Gate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		21BAF4080D62A82A00C18B91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21BAF4250D62A98900C18B91 /* rb_main.rb in Resources */,
+				21BAF41D0D62A8FC00C18B91 /* Gate.nib in Resources */,
+				21BAF41F0D62A91500C18B91 /* GateController.rb in Resources */,
+				21BAF44C0D62B32900C18B91 /* prefs.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DDCA7050ACC9A6100E082CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */,
+				21BAF41A0D62A8D400C18B91 /* RoRGate.nib in Resources */,
+				21BAF4220D62A92500C18B91 /* GateIconView.rb in Resources */,
+				21BAF4230D62A92500C18B91 /* RoRGateController.rb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21BAF4600D62BE7F00C18B91 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}",
+			);
+			outputPaths = (
+				"$(SRCROOT)/Contents.tgz",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "tar czf Contents.tgz -C ${TARGET_BUILD_DIR}/${WRAPPER_NAME} Contents";
+		};
+		21BAF47C0D62C6B600C18B91 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Contents.tgz",
+			);
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Contents.tgz",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp ${SRCROOT}/Contents.tgz ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		21BAF4090D62A82A00C18B91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21BAF4260D62A99C00C18B91 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DDCA7090ACC9A6100E082CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DDCA70A0ACC9A6100E082CE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		21BAF4340D62AA0300C18B91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21BAF40B0D62A82A00C18B91 /* Gate */;
+			targetProxy = 21BAF4330D62AA0300C18B91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		21BAF4180D62A8D400C18B91 /* RoRGate.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				21BAF4190D62A8D400C18B91 /* English */,
+			);
+			name = RoRGate.nib;
+			sourceTree = "<group>";
+		};
+		21BAF41B0D62A8FC00C18B91 /* Gate.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				21BAF41C0D62A8FC00C18B91 /* English */,
+			);
+			name = Gate.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		21BAF40F0D62A82B00C18B91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Gate-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Gate;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		21BAF4100D62A82B00C18B91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Gate-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Gate;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		4D7A7B580ABF745500C2D4C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Debug;
+		};
+		4D7A7B590ABF745500C2D4C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Release;
+		};
+		4DDCA70F0ACC9A6100E082CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = RoRGate;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		4DDCA7100ACC9A6100E082CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_MODEL_TUNING = G5;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = RoRGate;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		21BAF4110D62A82B00C18B91 /* Build configuration list for PBXNativeTarget "Gate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21BAF40F0D62A82B00C18B91 /* Debug */,
+				21BAF4100D62A82B00C18B91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D7A7B570ABF745500C2D4C0 /* Build configuration list for PBXProject "RoRGate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D7A7B580ABF745500C2D4C0 /* Debug */,
+				4D7A7B590ABF745500C2D4C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DDCA70E0ACC9A6100E082CE /* Build configuration list for PBXNativeTarget "RoRGate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DDCA70F0ACC9A6100E082CE /* Debug */,
+				4DDCA7100ACC9A6100E082CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

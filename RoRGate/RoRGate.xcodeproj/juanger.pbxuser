@@ -1,0 +1,194 @@
+// !$*UTF8*$!
+{
+	2146BD030D641800003B1D69 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 21BAF4210D62A92500C18B91 /* RoRGateController.rb */;
+		name = "RoRGateController.rb: 109";
+		rLen = 0;
+		rLoc = 3461;
+		rType = 0;
+		vrLen = 820;
+		vrLoc = 2;
+	};
+	2146BD040D641800003B1D69 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 21BAF4210D62A92500C18B91 /* RoRGateController.rb */;
+		name = "RoRGateController.rb: 109";
+		rLen = 0;
+		rLoc = 3461;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	21BAF3EC0D62A78400C18B91 /* RoRGate */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RoRGate;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	21BAF4020D62A7A300C18B91 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	21BAF4030D62A7A300C18B91 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	21BAF40B0D62A82A00C18B91 /* Gate */ = {
+		activeExec = 0;
+		executables = (
+			21BAF40D0D62A82A00C18B91 /* Gate */,
+		);
+	};
+	21BAF40D0D62A82A00C18B91 /* Gate */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Gate;
+		sourceDirectories = (
+		);
+	};
+	21BAF40E0D62A82A00C18B91 /* Gate-Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1292, 871}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 764}";
+			sepNavWindowFrame = "{{543, 9}, {1351, 999}}";
+		};
+	};
+	21BAF4210D62A92500C18B91 /* RoRGateController.rb */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1251, 1568}}";
+			sepNavSelRange = "{3461, 0}";
+			sepNavVisRange = "{0, 0}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Release;
+		activeExecutable = 21BAF3EC0D62A78400C18B91 /* RoRGate */;
+		activeTarget = 4DDCA7030ACC9A6100E082CE /* RoRGate */;
+		addToTargets = (
+			21BAF40B0D62A82A00C18B91 /* Gate */,
+		);
+		codeSenseManager = 21BAF4030D62A7A300C18B91 /* Code sense */;
+		executables = (
+			21BAF3EC0D62A78400C18B91 /* RoRGate */,
+			21BAF40D0D62A82A00C18B91 /* Gate */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					103,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1073,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1033,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 224663488;
+			PBXWorkspaceStateSaveDate = 224663488;
+		};
+		perUserProjectItems = {
+			2146BD030D641800003B1D69 /* PBXTextBookmark */ = 2146BD030D641800003B1D69 /* PBXTextBookmark */;
+			2146BD040D641800003B1D69 /* PBXTextBookmark */ = 2146BD040D641800003B1D69 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 21BAF4020D62A7A300C18B91 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	4DDCA7030ACC9A6100E082CE /* RoRGate */ = {
+		activeExec = 0;
+		executables = (
+			21BAF3EC0D62A78400C18B91 /* RoRGate */,
+		);
+	};
+}
