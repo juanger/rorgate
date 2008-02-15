@@ -15,6 +15,9 @@ class GateIconView < NSImageView
 
   def drawRect(aRect)
     image = NSImage.alloc.initByReferencingFile(@rorGateController.rorAppIcon)
+	if !image.isValid
+		image = NSImage.imageNamed("NSApplicationIcon")
+	end
     image.drawInRect_fromRect_operation_fraction(
       aRect,
       NSZeroRect,

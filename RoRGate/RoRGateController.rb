@@ -23,7 +23,7 @@ class RoRGateController < NSObject
     if !approveData
       alert = NSAlert.alertWithMessageText_defaultButton_alternateButton_otherButton_informativeTextWithFormat(
       "Required information missing",
-      "ok",
+      "OK",
       nil,
       nil,
       "You must provide a name and the path of the RoR app")
@@ -43,11 +43,12 @@ class RoRGateController < NSObject
     @rorAppIcon = @gatePath.stringByAppendingPathComponent("Contents/Resources/Icon.icns")
     FileManager.copyPath_toPath_handler(iconPath, @rorAppIcon, nil)
     #Set Preferences
+	port = (@port.stringValue.empty?)? "3000" : @port.stringValue 
     prefs = NSDictionary.dictionaryWithObjectsAndKeys(
-    @name.stringValue, "name", 
-    @appPath.stringValue, "path",
-    #@isIncluded.intValue, "allIncPkg",
-    @port.stringValue, "port", nil)
+		@name.stringValue, "name", 
+		@appPath.stringValue, "path",
+		#@isIncluded.intValue, "allIncPkg",
+		port, "port", nil)
     prefs.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Resources/prefs.plist"), false)
     #Set Info.plist
     NSLog(@gatePath)
