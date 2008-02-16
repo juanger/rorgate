@@ -29,13 +29,19 @@ class GateController < OSX::NSObject
 		@port = @prefs.valueForKey("port")
 		@appURL = "http://0.0.0.0:" + @port
 		@appPath = @prefs.valueForKey("path")
+		@allIncPkg = @prefs.valueForKey("allIncPkg")
 		
 		@mainWindow.setTitle(@name)
 	end
 
 	def	runRoRApp()
+	  if @allIncPkg == 1
+	    launchPath = NSBundle.mainBundle.pathForResource_ofType("rorApp",nil)
+    else
+      launchPath = @appPath.stringByAppendingPathComponent("script/server")
+	  end
 		@rorApp = NSTask.alloc.init
-		@rorApp.setLaunchPath @appPath.stringByAppendingPathComponent("script/server")
+		@rorApp.setLaunchPath(launchPath)
 		@rorApp.setCurrentDirectoryPath(@appPath)
 		@rorApp.setArguments(NSArray.arrayWithObjects("--port", @port, nil))
 		@rorApp.launch

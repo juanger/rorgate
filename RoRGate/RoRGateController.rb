@@ -14,47 +14,72 @@ FileManager = NSFileManager.defaultManager
 
 class RoRGateController < NSObject
 
-  ib_outlet :name, :appPath, :iconPath, :port, :isIncluded, :iconDrawer, :drawerLabel, :drawerIcon
+  ib_outlet :window
+  ib_outlet :name, :appPath, :iconPath, :port, :isIncluded
+  ib_outlet :iconDrawer, :drawerLabel, :drawerIcon
+  
   attr_accessor :gatePath, :redrawer, :gateTemplatePath, :rorAppIcon
 
 
   def createGateFiles
+    return unless approve_data()
 
-    if !approveData
-      alert = NSAlert.alertWithMessageText_defaultButton_alternateButton_otherButton_informativeTextWithFormat(
-      "Required information missing",
-      "OK",
-      nil,
-      nil,
-      "You must provide a name and the path of the RoR app")
-      alert.runModal
-      #alert.beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo()
-      return
-    end
-    #Path to the Gate.app copy
     @gatePath = NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent(@name.stringValue + ".app")
-    #Remove old copy
     system("rm -rf " + NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent("*.app"))
-    #Create the app folder and uncompress contents
+    
+    create_gate_dir()
+    if @isIncluded.intValue == 1
+      FileManager.copyPath_toPath_handler(
+        @appPath.stringValue,
+        @gatePath.stringByAppendingPathComponent("Contents/Resources/rorApp"),
+        nil)
+    end
+    create_preferences()
+
+    set_info()
+    toggle_drawer()
+  end
+
+  def approve_data
+    if @name.stringValue.empty? || @appPath.stringValue.empty?
+      alert = NSAlert.alertWithMessageText_defaultButton_alternateButton_otherButton_informativeTextWithFormat(
+            "Required information missing",
+            "OK",
+            nil,
+            nil,
+            "You must provide a name and the path of the RoR app")
+      alert.setIcon(NSImage.imageNamed("NSInfo"))
+      alert.beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo(@window, nil, nil, nil)      
+      return false
+    end
+    true
+  end
+  
+  def create_gate_dir
     FileManager.createDirectoryAtPath_attributes(@gatePath, nil)
     system("tar xzf " + GateTemplatePath + " -C " + @gatePath)	
-    #Set icon
     iconPath = @iconPath.stringValue
     @rorAppIcon = @gatePath.stringByAppendingPathComponent("Contents/Resources/Icon.icns")
     FileManager.copyPath_toPath_handler(iconPath, @rorAppIcon, nil)
-    #Set Preferences
-	port = (@port.stringValue.empty?)? "3000" : @port.stringValue 
+  end
+
+  def create_preferences()
+    port = (@port.stringValue.empty?)? "3000" : @port.stringValue 
     prefs = NSDictionary.dictionaryWithObjectsAndKeys(
-		@name.stringValue, "name", 
-		@appPath.stringValue, "path",
-		#@isIncluded.intValue, "allIncPkg",
-		port, "port", nil)
+		  @name.stringValue, "name", 
+		  @appPath.stringValue, "path",
+		  port, "port",
+		  @isIncluded.intValue, "allIncPkg", nil)
     prefs.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Resources/prefs.plist"), false)
-    #Set Info.plist
-    NSLog(@gatePath)
+  end
+
+  def set_info
     info = NSDictionary.dictionaryWithContentsOfFile(@gatePath.stringByAppendingPathComponent("Contents/Info.plist")).mutableCopy()
     info.setValue_forKey(@name.stringValue,"CFBundleName")
     info.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Info.plist"), false)
+  end
+
+  def toggle_drawer
     if @iconDrawer.state == 0
       @drawerLabel.setStringValue(@name.stringValue)
       @iconDrawer.open
@@ -62,13 +87,6 @@ class RoRGateController < NSObject
       @redrawer = 1
       @iconDrawer.close
     end
-  end
-
-  def approveData
-    if @name.stringValue.empty? || @appPath.stringValue.empty?
-      return false
-    end
-    true
   end
 
   def selectRoRAppPath
