@@ -12,13 +12,14 @@ require_framework 'WebKit'
 
 class GateController < OSX::NSObject
 
-	ib_outlet :webView, :mainWindow
+	ib_outlet :webView, :mainWindow, :gateMenu, :helpMenu
 	attr_accessor :rorApp, :name, :port, :appURL, :appPath
 
 	def awakeFromNib()
 		getPreferences()
 		runRoRApp()
 		@webView.mainFrame.loadRequest(NSURLRequest.requestWithURL(NSURL.URLWithString(@appURL)))
+    setMenuItems()
 	end
 
 	def	getPreferences()
@@ -45,6 +46,13 @@ class GateController < OSX::NSObject
 		@rorApp.setCurrentDirectoryPath(@appPath)
 		@rorApp.setArguments(NSArray.arrayWithObjects("--port", @port, nil))
 		@rorApp.launch
+	end
+	
+	def setMenuItems()
+	 	@gateMenu.submenu().itemWithTag(1).setTitle("About " + @name)
+		@gateMenu.submenu().itemWithTag(2).setTitle("Hide " + @name)
+		@gateMenu.submenu().itemWithTag(3).setTitle("Quit " + @name)
+		@helpMenu.submenu().itemWithTag(4).setTitle(@name + " Help")
 	end
 	
 	def webView_didFailProvisionalLoadWithError_forFrame(sender, error, frame)

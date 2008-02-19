@@ -173,7 +173,7 @@
 				21BAF4080D62A82A00C18B91 /* Resources */,
 				21BAF4090D62A82A00C18B91 /* Sources */,
 				21BAF40A0D62A82A00C18B91 /* Frameworks */,
-				21BAF4600D62BE7F00C18B91 /* ShellScript */,
+				21BAF4600D62BE7F00C18B91 /* TAR Contents */,
 			);
 			buildRules = (
 			);
@@ -192,7 +192,8 @@
 				4DDCA7050ACC9A6100E082CE /* Resources */,
 				4DDCA7090ACC9A6100E082CE /* Sources */,
 				4DDCA70B0ACC9A6100E082CE /* Frameworks */,
-				21BAF47C0D62C6B600C18B91 /* ShellScript */,
+				21BAF47C0D62C6B600C18B91 /* Copy Gate Contents */,
+				219FA3490D66B86D00C96200 /* Create DMG */,
 			);
 			buildRules = (
 			);
@@ -249,7 +250,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21BAF4600D62BE7F00C18B91 /* ShellScript */ = {
+		219FA3490D66B86D00C96200 /* Create DMG */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(CONFIGURATION_BUILD_DIR)/$(WRAPPER_NAME)",
+			);
+			name = "Create DMG";
+			outputPaths = (
+				"$(SRCROOT)/$(PROJECT_NAME).dmg",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
+		};
+		21BAF4600D62BE7F00C18B91 /* TAR Contents */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,6 +274,7 @@
 			inputPaths = (
 				"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}",
 			);
+			name = "TAR Contents";
 			outputPaths = (
 				"$(SRCROOT)/Contents.tgz",
 			);
@@ -264,7 +282,7 @@
 			shellPath = /bin/sh;
 			shellScript = "tar czf Contents.tgz -C ${TARGET_BUILD_DIR}/${WRAPPER_NAME} Contents";
 		};
-		21BAF47C0D62C6B600C18B91 /* ShellScript */ = {
+		21BAF47C0D62C6B600C18B91 /* Copy Gate Contents */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,6 +290,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Contents.tgz",
 			);
+			name = "Copy Gate Contents";
 			outputPaths = (
 				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Contents.tgz",
 			);
@@ -389,6 +408,7 @@
 					ppc,
 					i386,
 				);
+				CURRENT_PROJECT_VERSION = 0.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -420,6 +440,7 @@
 					ppc,
 					i386,
 				);
+				CURRENT_PROJECT_VERSION = "";
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
