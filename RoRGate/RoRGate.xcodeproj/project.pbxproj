@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2107CB7E0E1B5FA600CA43C3 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB7A0E1B5FA600CA43C3 /* MainMenu.nib */; };
+		2107CB7F0E1B5FA600CA43C3 /* MyDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB7C0E1B5FA600CA43C3 /* MyDocument.nib */; };
+		2107CB810E1B5FC100CA43C3 /* MyDocument.rb in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB800E1B5FC100CA43C3 /* MyDocument.rb */; };
 		21BAF41A0D62A8D400C18B91 /* RoRGate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4180D62A8D400C18B91 /* RoRGate.nib */; };
-		21BAF41D0D62A8FC00C18B91 /* Gate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF41B0D62A8FC00C18B91 /* Gate.nib */; };
 		21BAF41F0D62A91500C18B91 /* GateController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF41E0D62A91500C18B91 /* GateController.rb */; };
 		21BAF4220D62A92500C18B91 /* GateIconView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4200D62A92500C18B91 /* GateIconView.rb */; };
 		21BAF4230D62A92500C18B91 /* RoRGateController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4210D62A92500C18B91 /* RoRGateController.rb */; };
@@ -35,10 +37,12 @@
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		2107CB7B0E1B5FA600CA43C3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2107CB7D0E1B5FA600CA43C3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MyDocument.nib; sourceTree = "<group>"; };
+		2107CB800E1B5FC100CA43C3 /* MyDocument.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MyDocument.rb; sourceTree = "<group>"; };
 		21BAF40C0D62A82A00C18B91 /* Gate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BAF40E0D62A82A00C18B91 /* Gate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gate-Info.plist"; sourceTree = "<group>"; };
 		21BAF4190D62A8D400C18B91 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/RoRGate.nib; sourceTree = "<group>"; };
-		21BAF41C0D62A8FC00C18B91 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Gate.nib; sourceTree = "<group>"; };
 		21BAF41E0D62A91500C18B91 /* GateController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GateController.rb; sourceTree = "<group>"; };
 		21BAF4200D62A92500C18B91 /* GateIconView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GateIconView.rb; sourceTree = "<group>"; };
 		21BAF4210D62A92500C18B91 /* RoRGateController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = RoRGateController.rb; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		21BAF4130D62A85500C18B91 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2107CB800E1B5FC100CA43C3 /* MyDocument.rb */,
 				21BAF4200D62A92500C18B91 /* GateIconView.rb */,
 				21BAF4210D62A92500C18B91 /* RoRGateController.rb */,
 				21BAF41E0D62A91500C18B91 /* GateController.rb */,
@@ -114,8 +119,9 @@
 		21BAF4140D62A85A00C18B91 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2107CB7A0E1B5FA600CA43C3 /* MainMenu.nib */,
+				2107CB7C0E1B5FA600CA43C3 /* MyDocument.nib */,
 				21BAF44B0D62B32900C18B91 /* prefs.plist */,
-				21BAF41B0D62A8FC00C18B91 /* Gate.nib */,
 				21BAF4180D62A8D400C18B91 /* RoRGate.nib */,
 			);
 			name = Resources;
@@ -230,9 +236,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				21BAF4250D62A98900C18B91 /* rb_main.rb in Resources */,
-				21BAF41D0D62A8FC00C18B91 /* Gate.nib in Resources */,
 				21BAF41F0D62A91500C18B91 /* GateController.rb in Resources */,
 				21BAF44C0D62B32900C18B91 /* prefs.plist in Resources */,
+				2107CB7E0E1B5FA600CA43C3 /* MainMenu.nib in Resources */,
+				2107CB7F0E1B5FA600CA43C3 /* MyDocument.nib in Resources */,
+				2107CB810E1B5FC100CA43C3 /* MyDocument.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,20 +336,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2107CB7A0E1B5FA600CA43C3 /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2107CB7B0E1B5FA600CA43C3 /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		2107CB7C0E1B5FA600CA43C3 /* MyDocument.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2107CB7D0E1B5FA600CA43C3 /* English */,
+			);
+			name = MyDocument.nib;
+			sourceTree = "<group>";
+		};
 		21BAF4180D62A8D400C18B91 /* RoRGate.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				21BAF4190D62A8D400C18B91 /* English */,
 			);
 			name = RoRGate.nib;
-			sourceTree = "<group>";
-		};
-		21BAF41B0D62A8FC00C18B91 /* Gate.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				21BAF41C0D62A8FC00C18B91 /* English */,
-			);
-			name = Gate.nib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
