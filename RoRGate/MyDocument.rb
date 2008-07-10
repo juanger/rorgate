@@ -13,7 +13,7 @@ require_framework 'WebKit'
 
 class MyDocument < OSX::NSDocument
 
-  ib_outlets :webView, :mainWindow
+  ib_outlets :webView#, :mainWindow
   attr_reader :webView
   
   # def makeWindowControllers
@@ -60,7 +60,7 @@ class MyDocument < OSX::NSDocument
 		@name = @prefs[:name]
 		@port = @prefs[:port]
 		@appURL = "http://0.0.0.0:#{@port}"
-		@mainWindow.setTitle(@name)
+		#@mainWindow.setTitle(@name)
 	end
 	
 	

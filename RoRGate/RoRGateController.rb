@@ -15,28 +15,33 @@ FileManager = NSFileManager.defaultManager
 class RoRGateController < NSObject
 
   ib_outlet :window
-  ib_outlet :name, :appPath, :iconPath, :port, :isIncluded
+  ib_outlet :name, :appPath, :iconPath, :port, :isIncluded, :isDevelopment
   ib_outlet :iconDrawer, :drawerLabel, :drawerIcon
   
   attr_accessor :gatePath, :redrawer, :gateTemplatePath, :rorAppIcon
 
 
   def createGateFiles
-    return unless approve_data()
+    return unless approve_data() # Check for required data
 
+    # Internal path for gate
     @gatePath = NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent(@name.stringValue + ".app")
+    # Clean previous created gates
     system("rm -rf " + NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent("*.app"))
-    
+    # Untar gate contents
     create_gate_dir()
+    # All included Package
     if @isIncluded.intValue == 1
       FileManager.copyPath_toPath_handler(
         @appPath.stringValue,
         @gatePath.stringByAppendingPathComponent("Contents/Resources/rorApp"),
         nil)
     end
+    # prefs.plist
     create_preferences()
-
+    # Info.plist
     set_info()
+    # Show Drawer
     toggle_drawer()
   end
 
@@ -64,29 +69,20 @@ class RoRGateController < NSObject
   end
 
   def create_preferences()
-    port = (@port.stringValue.empty?)? "3000" : @port.stringValue 
-    prefs = NSDictionary.dictionaryWithObjectsAndKeys(
-		  @name.stringValue, "name", 
-		  @appPath.stringValue, "path",
-		  port, "port",
-		  @isIncluded.intValue, "allIncPkg", nil)
-    prefs.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Resources/prefs.plist"), false)
+    prefs = { 
+      :name => @name.stringValue,
+      :path => @appPath.stringValue,
+      :port => (@port.stringValue.empty?)? "3000" : @port.stringValue,
+      :allIncPkg => @isIncluded.intValue,
+      :development => @isDevelopment.intValue }
+    open(@gatePath.stringByAppendingPathComponent("Contents/Resources/prefs.plist"), "w") {|f| f.puts(prefs.to_plist) }
+    #prefs.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Resources/prefs.plist"), false)
   end
 
   def set_info
     info = NSDictionary.dictionaryWithContentsOfFile(@gatePath.stringByAppendingPathComponent("Contents/Info.plist")).mutableCopy()
     info.setValue_forKey(@name.stringValue,"CFBundleName")
     info.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Info.plist"), false)
-  end
-
-  def toggle_drawer
-    if @iconDrawer.state == 0
-      @drawerLabel.setStringValue(@name.stringValue)
-      @iconDrawer.open
-    else
-      @redrawer = 1
-      @iconDrawer.close
-    end
   end
 
   def selectRoRAppPath
@@ -113,6 +109,20 @@ class RoRGateController < NSObject
     if result == NSOKButton
       path = oPanel.filenames.objectAtIndex 0
       @iconPath.setStringValue path
+    end
+  end
+  
+  ##
+  #  Gate Icon panel
+  ##
+
+  def toggle_drawer
+    if @iconDrawer.state == 0
+      @drawerLabel.setStringValue(@name.stringValue)
+      @iconDrawer.open
+    else
+      @redrawer = 1
+      @iconDrawer.close
     end
   end
 

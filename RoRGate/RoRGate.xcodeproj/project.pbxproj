@@ -10,6 +10,7 @@
 		2107CB7E0E1B5FA600CA43C3 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB7A0E1B5FA600CA43C3 /* MainMenu.nib */; };
 		2107CB7F0E1B5FA600CA43C3 /* MyDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB7C0E1B5FA600CA43C3 /* MyDocument.nib */; };
 		2107CB810E1B5FC100CA43C3 /* MyDocument.rb in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB800E1B5FC100CA43C3 /* MyDocument.rb */; };
+		21AA63340E23FC8B00F419C7 /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */; };
 		21BAF41A0D62A8D400C18B91 /* RoRGate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4180D62A8D400C18B91 /* RoRGate.nib */; };
 		21BAF41F0D62A91500C18B91 /* GateController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF41E0D62A91500C18B91 /* GateController.rb */; };
 		21BAF4220D62A92500C18B91 /* GateIconView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4200D62A92500C18B91 /* GateIconView.rb */; };
@@ -17,7 +18,7 @@
 		21BAF4250D62A98900C18B91 /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
 		21BAF4260D62A99C00C18B91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		21BAF4270D62A9A900C18B91 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		21BAF4280D62A9A900C18B91 /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */; };
+		21BAF4280D62A9A900C18B91 /* RubyCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8F5E24E03AEB6EC03A81C6F /* RubyCocoa.framework */; };
 		21BAF44C0D62B32900C18B91 /* prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF44B0D62B32900C18B91 /* prefs.plist */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
 		4DDCA70A0ACC9A6100E082CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -34,6 +35,19 @@
 			remoteInfo = Gate;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		21AA63070E23FA8E00F419C7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				21BAF4280D62A9A900C18B91 /* RubyCocoa.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -62,7 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21BAF4270D62A9A900C18B91 /* Cocoa.framework in Frameworks */,
-				21BAF4280D62A9A900C18B91 /* RubyCocoa.framework in Frameworks */,
+				21AA63340E23FC8B00F419C7 /* RubyCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +191,7 @@
 			buildConfigurationList = 21BAF4110D62A82B00C18B91 /* Build configuration list for PBXNativeTarget "Gate" */;
 			buildPhases = (
 				21BAF4080D62A82A00C18B91 /* Resources */,
+				21AA63070E23FA8E00F419C7 /* CopyFiles */,
 				21BAF4090D62A82A00C18B91 /* Sources */,
 				21BAF40A0D62A82A00C18B91 /* Frameworks */,
 				21BAF4600D62BE7F00C18B91 /* TAR Contents */,
@@ -195,8 +210,8 @@
 			buildConfigurationList = 4DDCA70E0ACC9A6100E082CE /* Build configuration list for PBXNativeTarget "RoRGate" */;
 			buildPhases = (
 				4DDCA7040ACC9A6100E082CE /* Headers */,
-				4DDCA7050ACC9A6100E082CE /* Resources */,
 				4DDCA7090ACC9A6100E082CE /* Sources */,
+				4DDCA7050ACC9A6100E082CE /* Resources */,
 				4DDCA70B0ACC9A6100E082CE /* Frameworks */,
 				21BAF47C0D62C6B600C18B91 /* Copy Gate Contents */,
 				219FA3490D66B86D00C96200 /* Create DMG */,
@@ -272,7 +287,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/bin/ruby;
-			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
+			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}-dev.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
 		};
 		21BAF4600D62BE7F00C18B91 /* TAR Contents */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -280,7 +295,8 @@
 			files = (
 			);
 			inputPaths = (
-				"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Resources/GateController.rb",
+				"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Resources/MyDocument.rb",
 			);
 			name = "TAR Contents";
 			outputPaths = (
@@ -367,6 +383,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../ADDONS/trunk/build/Release\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -393,6 +413,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../ADDONS/trunk/build/Release\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -8,5 +8,9 @@
 	<string>/Users/juanger/Projects/quimera-is/webadmin</string>
 	<key>port</key>
 	<string>3000</string>
+	<key>development</key>
+	<integer>1</integer>
+	<key>allIncPkg</key>
+	<integer>0</integer>
 </dict>
 </plist>
