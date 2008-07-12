@@ -44,7 +44,7 @@ class GateController < OSX::NSObject
 
   def getPreferences()
     prefsPlist = NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent("prefs.plist")
-    @prefs = NSDictionary.dictionaryWithContentsOfFile(prefsPlist)    
+    @prefs = NSDictionary.dictionaryWithContentsOfFile(prefsPlist)  
     
     @name = @prefs[:name]
     @port = @prefs[:port]
@@ -52,6 +52,11 @@ class GateController < OSX::NSObject
     @appPath = @prefs[:path]
     @allIncPkg = @prefs[:allIncPkg]
     @dev = @prefs[:development]
+    @icon = @prefs[:icon]
+    # NSApp.setApplicationIconImage(
+    #         NSImage.alloc.initWithContentsOfFile("#{NSBundle.mainBundle.resourcePath}/#{@icon}"))
+
+    #NSWorkspace.sharedWorkspace.noteFileSystemChanged NSBundle.mainBundle.bundlePath
   end
      
   def runRoRApp()
@@ -121,6 +126,12 @@ class GateController < OSX::NSObject
     end
 	  `open -a textmate "#{appPath}"`
 	end
+	
+	ib_action :reset_server do |sender|
+	  stopRoRApp()
+	  runRoRApp()
+	end
+	
 	
 end
 

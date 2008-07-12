@@ -12,5 +12,7 @@
 	<integer>1</integer>
 	<key>allIncPkg</key>
 	<integer>0</integer>
+	<key>icon</key>
+	<string>icon.png</string>
 </dict>
 </plist>

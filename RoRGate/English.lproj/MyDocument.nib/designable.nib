@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.01">
+<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.02">
 	<data>
 		<int key="IBDocument.SystemTarget">0</int>
 		<string key="IBDocument.SystemVersion">9E17</string>
-		<string key="IBDocument.InterfaceBuilderVersion">629</string>
+		<string key="IBDocument.InterfaceBuilderVersion">670</string>
 		<string key="IBDocument.AppKitVersion">949.33</string>
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string id="954133350">com.apple.WebKitIBPlugin</string>
-			<string id="629661964">com.apple.InterfaceBuilder.CocoaPlugin</string>
+			<string>com.apple.WebKitIBPlugin</string>
+			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="264214575">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -31,9 +31,10 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{194, 72}, {948, 650}}</string>
 				<int key="NSWTFlags">1886912512</int>
-				<string key="NSWindowTitle" id="83123279">Window</string>
+				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<string key="NSViewClass">View</string>
+				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSWindowContentMinSize">{94, 86}</string>
 				<object class="NSView" key="NSWindowView" id="856472545">
 					<reference key="NSNextResponder"/>
@@ -42,7 +43,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="WebView" id="47275963">
 							<reference key="NSNextResponder" ref="856472545"/>
-							<int key="NSvFlags">256</int>
+							<int key="NSvFlags">274</int>
 							<object class="NSMutableSet" key="NSDragTypes">
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSMutableArray" key="set.sortedObjects">
@@ -64,12 +65,11 @@
 							</object>
 							<string key="NSFrame">{{5, 5}, {938, 645}}</string>
 							<reference key="NSSuperview" ref="856472545"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
-							<string key="FrameName" id="731447769"/>
+							<string key="FrameName"/>
 							<string key="GroupName"/>
 							<object class="WebPreferences" key="Preferences">
-								<reference key="Identifier" ref="731447769"/>
+								<string key="Identifier"/>
 								<object class="NSMutableDictionary" key="Values">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="NSMutableArray" key="dict.sortedKeys">
@@ -92,10 +92,10 @@
 					</object>
 					<string key="NSFrameSize">{948, 650}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{94, 108}</string>
+				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -171,7 +171,7 @@
 							<reference ref="856472545"/>
 						</object>
 						<reference key="parent" ref="602596567"/>
-						<reference key="objectName" ref="83123279"/>
+						<string key="objectName">Window</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
@@ -198,6 +198,7 @@
 					<string>-3.IBPluginDependency</string>
 					<string>-3.ImportedFromIB2</string>
 					<string>200023.IBPluginDependency</string>
+					<string>5.IBEditorWindowLastContentRect</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBWindowTemplateEditedContentRect</string>
 					<string>5.ImportedFromIB2</string>
@@ -209,18 +210,19 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<reference ref="629661964"/>
-					<reference ref="629661964"/>
-					<reference ref="629661964"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<reference ref="954133350"/>
-					<reference ref="629661964"/>
-					<string>{{664, 493}, {948, 650}}</string>
+					<string>com.apple.WebKitIBPlugin</string>
+					<string>{{318, 269}, {948, 650}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>{{318, 269}, {948, 650}}</string>
 					<reference ref="9"/>
 					<string>{{664, 493}, {948, 650}}</string>
 					<reference ref="9"/>
 					<string>{94, 86}</string>
-					<reference ref="629661964"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 				</object>
 			</object>
@@ -252,15 +254,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MyDocument</string>
 					<string key="superclassName">NSDocument</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">webView</string>
 						<string key="NS.object.0">id</string>
@@ -273,72 +266,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">../../RoRGate.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../RoRGate.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableData" key="IBDocument.RunnableNib">
-			<bytes key="NS.bytes">YnBsaXN0MDDUAAEAAgADAAQABQAGAAkAClgkdmVyc2lvblQkdG9wWSRhcmNoaXZlclgkb2JqZWN0cxIA
-AYag0QAHAAhdSUIub2JqZWN0ZGF0YYABXxAPTlNLZXllZEFyY2hpdmVyrxBbAAsADAAxADUANgA8AD0A
-QQBFAEwAVABsAG0AbgBvAHAAcQALAH4AggCYAKgAqQCqAKsArACtAK4ArwCwALEAsgCzALQAtQALALYA
-tgC3AL0AyADJAMoAywDMAM0A0QDUANkA3QALAN4A4ADhAOIA5QDmAOoA7wDwAPUA9gD7APwBAwEGAQcB
-CQEQARgBIAEhASIBIwEkAScBKgE2AUIBQwFEAUUBRgFHAUgBSQFKAUsBTgFRAVRVJG51bGzfEBIADQAO
-AA8AEAARABIAEwAUABUAFgAXABgAGQAaABsAHAAdAB4AHwAgACEAIgAjACQAJQAmACcAKAApACoAKwAs
-AC0ALgAvADBWTlNSb290ViRjbGFzc11OU09iamVjdHNLZXlzXxAPTlNDbGFzc2VzVmFsdWVzXxAZTlNB
-Y2Nlc3NpYmlsaXR5T2lkc1ZhbHVlc11OU0Nvbm5lY3Rpb25zW05TTmFtZXNLZXlzW05TRnJhbWV3b3Jr
-XU5TQ2xhc3Nlc0tleXNaTlNPaWRzS2V5c11OU05hbWVzVmFsdWVzXxAZTlNBY2Nlc3NpYmlsaXR5Q29u
-bmVjdG9yc11OU0ZvbnRNYW5hZ2VyXxAQTlNWaXNpYmxlV2luZG93c18QD05TT2JqZWN0c1ZhbHVlc18Q
-F05TQWNjZXNzaWJpbGl0eU9pZHNLZXlzWU5TTmV4dE9pZFxOU09pZHNWYWx1ZXOAAoBagD+AS4BZgAiA
-RIAFgEqATIBFgFeAAIAGgEOAWBIAAw1ugE3SAA4AMgAzADRbTlNDbGFzc05hbWWABIADWk15RG9jdW1l
-bnTSADcAOAA5ADpYJGNsYXNzZXNaJGNsYXNzbmFtZaIAOgA7Xk5TQ3VzdG9tT2JqZWN0WE5TT2JqZWN0
-XxAQSUJDb2NvYUZyYW1ld29ya9IADgA+AD8AQFpOUy5vYmplY3RzgAeg0gA3ADgAQgBDowBDAEQAO1xO
-U011dGFibGVTZXRVTlNTZXTSAA4APgBGAEeAMKQASABJAEoAS4AJgDmAO4A91AAOAE0ATgBPAFAAHwBS
-AFNdTlNEZXN0aW5hdGlvblhOU1NvdXJjZVdOU0xhYmVsgDiAAoAKgDfcAFUADgBWAFcAWABZAFoAWwBc
-AF0AXgBfAGAAYQBiAGMAZABlAGYAZwBoAGkAagBrXE5TV2luZG93Vmlld1xOU1NjcmVlblJlY3RdTlNX
-aW5kb3dUaXRsZVlOU1dURmxhZ3NdTlNXaW5kb3dDbGFzc18QFk5TV2luZG93Q29udGVudE1pblNpemVc
-TlNXaW5kb3dSZWN0XxAPTlNXaW5kb3dCYWNraW5nXxARTlNXaW5kb3dTdHlsZU1hc2tZTlNNaW5TaXpl
-W05TVmlld0NsYXNzgBCANoA0gAwScHgAAIANgA+ACxACEQEPgDWADl8QF3t7MTk0LCA3Mn0sIHs5NDgs
-IDY1MH19VldpbmRvd1hOU1dpbmRvd1RWaWV3WHs5NCwgODZ91wByAA4AcwB0AHUAbgB2AHcAeAB5AHoA
-ewB3AH1fEA9OU05leHRSZXNwb25kZXJaTlNTdWJ2aWV3c1hOU3ZGbGFnc1tOU0ZyYW1lU2l6ZVtOU1N1
-cGVydmlld4ARgDOAEhEBEoAxgBGAMtIADgA+AEYAgIAwoQCBgBPdAHIADgCDAIQAhQCGAHQAhwCIAG4A
-iQB2AIoAYACMAI0AjgCPAJAAkQCSAI4AdwCVAGAAl1dOU0ZyYW1lWkFsbG93c1VuZG9bUHJlZmVyZW5j
-ZXNbTlNEcmFnVHlwZXNZR3JvdXBOYW1lXxASVXNlQmFja0ZvcndhcmRMaXN0WUZyYW1lTmFtZV1OU05l
-eHRLZXlWaWV3gBCAL4AiCYAmgBQRAQCAJQmAEYAkgBCAI9IADgA+AD8AmoAHrQCbAJwAnQCeAJ8AoACh
-AKIAowCkAKUApgCngBWAFoAXgBiAGYAagBuAHIAdgB6AH4AggCFfEBlOZVhUIFJURkQgcGFzdGVib2Fy
-ZCB0eXBlWnB1YmxpYy51cmxfEBJOU1N0cmluZ1Bib2FyZFR5cGVfEB5OZVhUIFRJRkYgdjQuMCBwYXN0
-ZWJvYXJkIHR5cGVfEBlBcHBsZSBVUkwgcGFzdGVib2FyZCB0eXBlXxAhQXBwbGUgV2ViIEFyY2hpdmUg
-cGFzdGVib2FyZCB0eXBlXxAbV2ViVVJMc1dpdGhUaXRsZXNQYm9hcmRUeXBlXxAPcHVibGljLnVybC1u
-YW1lXxAaQXBwbGUgSFRNTCBwYXN0ZWJvYXJkIHR5cGVfEBVOU0ZpbGVuYW1lc1Bib2FyZFR5cGVfEBdO
-U0NvbG9yIHBhc3RlYm9hcmQgdHlwZV8QGkFwcGxlIFBJQ1QgcGFzdGVib2FyZCB0eXBlXxAqTmVYVCBS
-aWNoIFRleHQgRm9ybWF0IHYxLjAgcGFzdGVib2FyZCB0eXBlXxAUe3s1LCA1fSwgezkzOCwgNjQ1fX1Q
-0wAOALgAuQC6AJUAvFpJZGVudGlmaWVyVlZhbHVlc4AugCSAJ9MADgC+AD4AvwDAAMRXTlMua2V5c4At
-owDBAMIAw4AogCmAKqMAxQDGAMWAK4AsgCtfEBpXZWJLaXREZWZhdWx0Rml4ZWRGb250U2l6ZV8QFVdl
-YktpdE1pbmltdW1Gb250U2l6ZV8QFVdlYktpdERlZmF1bHRGb250U2l6ZRAMEAHSADcAOADOAM+jAM8A
-0AA7XxATTlNNdXRhYmxlRGljdGlvbmFyeVxOU0RpY3Rpb25hcnnSADcAOADSANOiANMAO15XZWJQcmVm
-ZXJlbmNlc9IANwA4ANUA1qQA1gDXANgAO1dXZWJWaWV3Vk5TVmlld1tOU1Jlc3BvbmRlctIANwA4ANoA
-26MA2wDcADteTlNNdXRhYmxlQXJyYXlXTlNBcnJheVp7OTQ4LCA2NTB90gA3ADgA3wDXowDXANgAO18Q
-Fnt7MCwgMH0sIHsxOTIwLCAxMTc4fX1Zezk0LCAxMDh90gA3ADgA4wDkogDkADtfEBBOU1dpbmRvd1Rl
-bXBsYXRlWGRlbGVnYXRl0gA3ADgA5wDoowDoAOkAO18QFE5TTmliT3V0bGV0Q29ubmVjdG9yXk5TTmli
-Q29ubmVjdG9y1AAOAE0ATgBPAFAAgQAfAO6AOIATgAKAOld3ZWJWaWV31AAOAE0ATgBPAFAAUgAfAPSA
-OIAKgAKAPFZ3aW5kb3fUAA4ATQBOAE8AUAAfAIEA+oA4gAKAE4A+XxARZnJhbWVMb2FkRGVsZWdhdGXS
-AA4APgD9AP6AQqQAYABSAIEBAoAQgAqAE4BA0gAOADIAMwEFgASAQV1OU0FwcGxpY2F0aW9u0gA3ADgB
-CADcogDcADvSAA4APgD9AQuAQqQAUgAfAGAAH4AKgAKAEIAC0gAOAD4A/QESgEKlAB8AUgBgAIEBAoAC
-gAqAEIATgEDSAA4APgD9ARqAQqUBGwBjAR0BHgEfgEaADIBHgEiASVxGaWxlJ3MgT3duZXJcQ29udGVu
-dCBWaWV3WFdlYiBWaWV3W0FwcGxpY2F0aW9u0gAOAD4A/QEmgEKg0gAOAD4A/QEpgEKg0gAOAD4A/QEs
-gEKpAB8AUgCBAEkASABLAGAASgECgAKACoATgDmACYA9gBCAO4BA0gAOAD4A/QE4gEKpATkBOgE7ATwB
-PQE+AT8BQAFBgE6AT4BQgFGAUoBTgFSAVYBWEgADDW0QBRIAAw1XEgADDWcSAAMNYhIAAw1sEAYQEhP/
-/////////dIADgA+AEYBTYAwoNIADgA+AP0BUIBCoNIADgA+AP0BU4BCoNIANwA4AVUBVqIBVgA7Xk5T
-SUJPYmplY3REYXRhAAgAGQAiACcAMQA6AD8ARABSAFQAZgEfASUBcAF3AX4BjAGeAboByAHUAeAB7gH5
-AgcCIwIxAkQCVgJwAnoChwKJAosCjQKPApECkwKVApcCmQKbAp0CnwKhAqMCpQKnAqwCrgK3AsMCxQLH
-AtIC2wLkAu8C9AMDAwwDHwMoAzMDNQM2Az8DRgNTA1kDYgNkA20DbwNxA3MDdQOGA5QDnQOlA6cDqQOr
-A60D3gPrA/gEBgQQBB4ENwREBFYEagR0BIAEggSEBIYEiASNBI8EkQSTBJUEmASaBJwEtgS9BMYEywTU
-BPEFAwUOBRcFIwUvBTEFMwU1BTgFOgU8BT4FRwVJBUwFTgWDBYsFlgWiBa4FuAXNBdcF5QXnBekF6wXs
-Be4F8AXzBfUF9gX4BfoF/AX+BgcGCQYkBiYGKAYqBiwGLgYwBjIGNAY2BjgGOgY8Bj4GWgZlBnoGmwa3
-BtsG+QcLBygHQAdaB3cHpAe7B7wHyQfUB9sH3QffB+EH7gf2B/gH/wgBCAMIBQgMCA4IEAgSCC8IRwhf
-CGEIYwhsCHMIiQiWCJ8IpAizCLwIxQjNCNQI4AjpCPAI/wkHCRIJGwkiCTsJRQlOCVMJZglvCXgJfwmW
-CaUJtgm4CboJvAm+CcYJ1wnZCdsJ3QnfCeYJ9wn5CfsJ/Qn/ChMKHAoeCicKKQorCi0KLwo4CjoKPApK
-ClMKWAphCmMKbApuCnAKcgp0Cn0KfwqKCowKjgqQCpIKlAqdCp8KqgqsCq4KsAqyCrQKwQrOCtcK4wrs
-Cu4K7wr4CvoK+wsECwYLGQsbCx0LHwshCyMLJQsnCykLKws0CzYLSQtLC00LTwtRC1MLVQtXC1kLWwtg
-C2ILZwtsC3ELdgt4C3oLgwuMC44LjwuYC5oLmwukC6YLpwuwC7UAAAAAAAACAgAAAAAAAAFXAAAAAAAA
-AAAAAAAAAAALxA</bytes>
-		</object>
 	</data>
 </archive>

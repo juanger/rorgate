@@ -15,14 +15,15 @@ class GateIconView < NSImageView
 
   def drawRect(aRect)
     image = NSImage.alloc.initByReferencingFile(@rorGateController.rorAppIcon)
-	if !image.isValid
-		image = NSImage.imageNamed("NSApplicationIcon")
-	end
-    image.drawInRect_fromRect_operation_fraction(
-      aRect,
-      NSZeroRect,
-      2,
-      1.0)
+    if !image.isValid
+      image = NSImage.imageNamed("NSApplicationIcon")
+    end
+    image.objc_send :drawInRect, aRect,
+                    :fromRect, NSZeroRect,
+                    :operation, 2,
+                    :fraction, 1.0
+    # setImageScaling(NSScaleProportionally)
+    # setImageAlignment(NSImageAlignCenter)
   end
 
 	def	mouseDown(event)

@@ -39,6 +39,8 @@ class RoRGateController < NSObject
     end
     # prefs.plist
     create_preferences()
+    # image icon
+    set_icon()
     # Info.plist
     set_info()
     # Show Drawer
@@ -64,7 +66,7 @@ class RoRGateController < NSObject
     FileManager.createDirectoryAtPath_attributes(@gatePath, nil)
     system("tar xzf " + GateTemplatePath + " -C " + @gatePath)	
     iconPath = @iconPath.stringValue
-    @rorAppIcon = @gatePath.stringByAppendingPathComponent("Contents/Resources/Icon.icns")
+    @rorAppIcon = "#{@gatePath}/Contents/Resources/#{iconPath.lastPathComponent()}"
     FileManager.copyPath_toPath_handler(iconPath, @rorAppIcon, nil)
   end
 
@@ -73,16 +75,23 @@ class RoRGateController < NSObject
       :name => @name.stringValue,
       :path => @appPath.stringValue,
       :port => (@port.stringValue.empty?)? "3000" : @port.stringValue,
+      :icon => @iconPath.stringValue.lastPathComponent(),
       :allIncPkg => @isIncluded.intValue,
       :development => @isDevelopment.intValue }
-    open(@gatePath.stringByAppendingPathComponent("Contents/Resources/prefs.plist"), "w") {|f| f.puts(prefs.to_plist) }
-    #prefs.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Resources/prefs.plist"), false)
+    open("#{@gatePath}/Contents/Resources/prefs.plist", "w") {|f| f.puts(prefs.to_plist) }
   end
 
   def set_info
     info = NSDictionary.dictionaryWithContentsOfFile(@gatePath.stringByAppendingPathComponent("Contents/Info.plist")).mutableCopy()
     info.setValue_forKey(@name.stringValue,"CFBundleName")
     info.writeToFile_atomically(@gatePath.stringByAppendingPathComponent("Contents/Info.plist"), false)
+  end
+
+  def set_icon
+    icon = NSImage.alloc.initWithContentsOfFile(@rorAppIcon)
+    NSWorkspace.sharedWorkspace.objc_send :setIcon, icon,
+                                          :forFile, @gatePath,
+                                          :options, 0
   end
 
   def selectRoRAppPath
@@ -103,7 +112,7 @@ class RoRGateController < NSObject
     oPanel.setCanChooseFiles true
     oPanel.setCanChooseDirectories false
 
-    fileTypes = NSArray.arrayWithObject("icns")
+    fileTypes = ["icns", "png", "jpg"]
     result = oPanel.runModalForDirectory_file_types(NSHomeDirectory(), nil, fileTypes)
 
     if result == NSOKButton
