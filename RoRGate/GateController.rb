@@ -12,26 +12,35 @@ require_framework 'WebKit'
 
 class GateController < OSX::NSObject
 
-	ib_outlet  :gateMenu, :helpMenu, :devMenu
-	ib_outlet  :server_hud, :server_out
-	
-	def awakeFromNib()
-		getPreferences()
-		if @dev == 1
-		  configServerHUD()
-	  else
+  ib_outlet  :gateMenu, :helpMenu, :devMenu
+  ib_outlet  :server_hud, :server_out
+  ib_outlet  :pref_window, :pref_name, :pref_port, :pref_icon
+
+  RSRC_PATH = NSBundle.mainBundle.resourcePath
+
+  def initialize()
+    defaults = NSUserDefaults.standardUserDefaults
+    appDefaults = {:WebKitDeveloperExtras => true}
+    defaults.registerDefaults appDefaults
+  end
+
+  def awakeFromNib()
+    getPreferences()
+    if @dev == 1
+      configServerHUD()
+    else
       NSApp.mainMenu.removeItem @devMenu
-	  end
-		runRoRApp()
+    end
+    runRoRApp()
     setMenuItems()
-	end
-	
-	def applicationShouldTerminate(sender)
-	  stopRoRApp()
-		true
-	end
-	
-	def setMenuItems()
+  end
+
+  def applicationShouldTerminate(sender)
+    stopRoRApp()
+    true
+  end
+
+  def setMenuItems()
     @gateMenu.submenu().itemWithTag(1).setTitle("About " + @name)
     @gateMenu.submenu().itemWithTag(2).setTitle("Hide " + @name)
     @gateMenu.submenu().itemWithTag(3).setTitle("Quit " + @name)
@@ -45,7 +54,7 @@ class GateController < OSX::NSObject
   def getPreferences()
     prefsPlist = NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent("prefs.plist")
     @prefs = NSDictionary.dictionaryWithContentsOfFile(prefsPlist)  
-    
+
     @name = @prefs[:name]
     @port = @prefs[:port]
     @appURL = "http://0.0.0.0:" + @port
@@ -53,12 +62,8 @@ class GateController < OSX::NSObject
     @allIncPkg = @prefs[:allIncPkg]
     @dev = @prefs[:development]
     @icon = @prefs[:icon]
-    # NSApp.setApplicationIconImage(
-    #         NSImage.alloc.initWithContentsOfFile("#{NSBundle.mainBundle.resourcePath}/#{@icon}"))
-
-    #NSWorkspace.sharedWorkspace.noteFileSystemChanged NSBundle.mainBundle.bundlePath
   end
-     
+
   def runRoRApp()
     if @allIncPkg == 1
       launchPath = NSBundle.mainBundle.pathForResource_ofType("rorApp",nil) + "/script/server"
@@ -75,64 +80,100 @@ class GateController < OSX::NSObject
       @rorApp.standardOutput.fileHandleForReading.readInBackgroundAndNotify
       nCenter = NSNotificationCenter.defaultCenter
       nCenter.objc_send :addObserver, self,
-                :selector, 'gotData',
-                :name, NSFileHandleReadCompletionNotification,
-                :object, @rorApp.standardOutput.fileHandleForReading
+                        :selector, 'gotData',
+                        :name, NSFileHandleReadCompletionNotification,
+                        :object, @rorApp.standardOutput.fileHandleForReading
     end
     @rorApp.launch
   end
-	
-	def stopRoRApp()
-	 	@rorApp.terminate()
-		NSNotificationCenter.defaultCenter.removeObserver self
-	end
-	
-	##
-	#  Server Output 
-	##
-	
-	def gotData(aNotification)
-	 data = aNotification.userInfo.objectForKey(NSFileHandleNotificationDataItem)
-	 data_string = NSString.alloc.objc_send(:initWithData, data,
-                            :encoding, NSUTF8StringEncoding).to_s
-                            
-	 if data.length != 0
-	   @server_out.appendString(data_string)
-   else
-     stopRoRApp()
-   end
-   aNotification.object.readInBackgroundAndNotify
-	end
-	
-	def configServerHUD()
+
+  def stopRoRApp()
+    @rorApp.terminate()
+    NSNotificationCenter.defaultCenter.removeObserver self
+  end
+
+  ##
+  #  Server Output 
+  ##
+
+  def gotData(aNotification)
+    data = aNotification.userInfo.objectForKey(NSFileHandleNotificationDataItem)
+    data_string = NSString.alloc.objc_send( :initWithData, data,
+                                            :encoding, NSUTF8StringEncoding).to_s
+
+    if data.length != 0
+      @server_out.appendString(data_string)
+    else
+      stopRoRApp()
+    end
+    aNotification.object.readInBackgroundAndNotify
+  end
+
+  def configServerHUD()
     @server_out.setBackgroundColor NSColor.colorWithDeviceWhite_alpha(0.12,0.84)
     @server_out.setTextColor(NSColor.whiteColor)
     @server_out.setFont(NSFont.fontWithName_size('Monaco', 12.0))
   end
-  
+
   ##
   #  Actions
   ##
-  
-	ib_action :server_display do |sender|
+
+  ib_action :server_display do |sender|
     @server_hud.display
-	end
-	
-	ib_action :open_in_textmate do |sender|
-	  if @allIncPkg != 1
-	    appPath = @appPath 
+  end
+
+  ib_action :open_in_textmate do |sender|
+    if @allIncPkg != 1
+      appPath = @appPath 
     else
       appPath = NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent("rorApp")
     end
-	  `open -a textmate "#{appPath}"`
-	end
-	
-	ib_action :reset_server do |sender|
-	  stopRoRApp()
-	  runRoRApp()
-	end
-	
-	
+    `open -a textmate "#{appPath}"`
+  end
+
+  ib_action :reset_server do |sender|
+    stopRoRApp()
+    runRoRApp()
+  end
+
+  ib_action :select_icon do |sender|
+    oPanel = NSOpenPanel.openPanel
+    oPanel.setCanChooseFiles true
+    oPanel.setCanChooseDirectories false
+
+    fileTypes = ["icns", "png", "jpg"]
+    result = oPanel.runModalForDirectory_file_types(NSHomeDirectory(), nil, fileTypes)
+
+    if result == NSOKButton
+      @tmp_icon_path = oPanel.filenames.objectAtIndex 0
+      @pref_icon.setImage NSImage.alloc.initWithContentsOfFile(@tmp_icon_path)
+    end
+  end
+
+  ib_action :save_preferences do |sender|
+    if @tmp_icon_path
+      icon_path = RSRC_PATH + "/#{@tmp_icon_path.lastPathComponent()}"
+      FileManager.removeFileAtPath_handler(RSRC_PATH + "/#{@icon}", nil)
+      FileManager.copyPath_toPath_handler(@tmp_icon_path, iconPath, nil)
+    end
+
+    prefs = { :name => @pref_name.stringValue,
+      :port => @pref_port.stringValue,
+      :icon => ((icon_path) ? icon_path : @icon) 
+    }
+    open(RSRC_PATH +"/prefs.plist", "w") {|f| f.puts(prefs.to_plist) }
+  end
+
+  ib_action :open_preferences do |sender|
+    getPreferences()
+    @pref_name.setStringValue(@name)
+    @pref_port.setStringValue(@port)
+    NSLog(RSRC_PATH + "/#{@icon}")
+    @pref_icon.setImage NSImage.alloc.initWithContentsOfFile(RSRC_PATH + "/#{@icon}")
+    @pref_window.orderFront(self)
+  end
+
 end
 
 class NSTextView

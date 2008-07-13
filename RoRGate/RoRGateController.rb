@@ -112,7 +112,7 @@ class RoRGateController < NSObject
     oPanel.setCanChooseFiles true
     oPanel.setCanChooseDirectories false
 
-    fileTypes = ["icns", "png", "jpg"]
+    fileTypes = ["icns", "png", "jpg", "gif", "tiff"]
     result = oPanel.runModalForDirectory_file_types(NSHomeDirectory(), nil, fileTypes)
 
     if result == NSOKButton

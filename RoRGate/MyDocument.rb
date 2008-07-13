@@ -33,10 +33,11 @@ class MyDocument < OSX::NSDocument
     # Add any code here that need to be executed once the
     # windowController has loaded the document's window.
     getPreferences()
-    @webView.mainFrame.loadRequest(
-        NSURLRequest.objc_send :requestWithURL, (NSURL.URLWithString(@appURL)),
-                               :cachePolicy, NSURLRequestReloadIgnoringLocalCacheData,
-                               :timeoutInterval, 30)
+    @webView.mainFrame.loadRequest(NSURLRequest.requestWithURL(NSURL.URLWithString(@appURL)))
+    # @webView.mainFrame.loadRequest(
+    #     NSURLRequest.objc_send :requestWithURL, (NSURL.URLWithString(@appURL)),
+    #                            :cachePolicy, NSURLRequestReloadIgnoringLocalCacheData,
+    #                            :timeoutInterval, 30)
     @webView.setUIDelegate self  
   end
 
@@ -87,10 +88,11 @@ class MyDocument < OSX::NSDocument
   end
   
   def webView_didFailProvisionalLoadWithError_forFrame(sender, error, frame)
-		@webView.mainFrame.loadRequest(
-		    NSURLRequest.NSURLRequest.objc_send :requestWithURL, (NSURL.URLWithString(@appURL)),
-                               :cachePolicy, NSURLRequestReloadIgnoringLocalCacheData,
-                               :timeoutInterval, 30)
+    @webView.mainFrame.loadRequest(NSURLRequest.requestWithURL(NSURL.URLWithString(@appURL)))
+    # @webView.mainFrame.loadRequest(
+    #     NSURLRequest.NSURLRequest.objc_send :requestWithURL, (NSURL.URLWithString(@appURL)),
+    #                                :cachePolicy, NSURLRequestReloadIgnoringLocalCacheData,
+    #                                :timeoutInterval, 30)
 	end
   
 end
