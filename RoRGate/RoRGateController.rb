@@ -55,7 +55,7 @@ class RoRGateController < NSObject
             nil,
             nil,
             "You must provide a name and the path of the RoR app")
-      alert.setIcon(NSImage.imageNamed("NSInfo"))
+      alert.setIcon(NSImage.imageNamed("NSWarning"))
       alert.beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo(@window, nil, nil, nil)      
       return false
     end

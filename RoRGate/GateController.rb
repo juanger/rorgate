@@ -10,13 +10,14 @@ require 'osx/cocoa'
 include OSX
 require_framework 'WebKit'
 
+FileManager = NSFileManager.defaultManager
+RSRC_PATH = NSBundle.mainBundle.resourcePath
+
 class GateController < OSX::NSObject
 
   ib_outlet  :gateMenu, :helpMenu, :devMenu
   ib_outlet  :server_hud, :server_out
   ib_outlet  :pref_window, :pref_name, :pref_port, :pref_icon
-
-  RSRC_PATH = NSBundle.mainBundle.resourcePath
 
   def initialize()
     defaults = NSUserDefaults.standardUserDefaults
@@ -48,7 +49,7 @@ class GateController < OSX::NSObject
   end
 
   ##
-  #  Methods to Run RoR application 
+  #  Methods to Run RoR application (fold)
   ##
 
   def getPreferences()
@@ -92,8 +93,10 @@ class GateController < OSX::NSObject
     NSNotificationCenter.defaultCenter.removeObserver self
   end
 
+  # (end)
+  
   ##
-  #  Server Output 
+  #  Server Output (fold)
   ##
 
   def gotData(aNotification)
@@ -115,8 +118,10 @@ class GateController < OSX::NSObject
     @server_out.setFont(NSFont.fontWithName_size('Monaco', 12.0))
   end
 
+  # (end)
+  
   ##
-  #  Actions
+  #  Actions (fold)
   ##
 
   ib_action :server_display do |sender|
@@ -152,28 +157,47 @@ class GateController < OSX::NSObject
   end
 
   ib_action :save_preferences do |sender|
-    if @tmp_icon_path
-      icon_path = RSRC_PATH + "/#{@tmp_icon_path.lastPathComponent()}"
-      FileManager.removeFileAtPath_handler(RSRC_PATH + "/#{@icon}", nil)
-      FileManager.copyPath_toPath_handler(@tmp_icon_path, iconPath, nil)
-    end
-
     prefs = { :name => @pref_name.stringValue,
       :port => @pref_port.stringValue,
-      :icon => ((icon_path) ? icon_path : @icon) 
+      :icon => @icon,
+      :path => @appPath,
+      :allIncPkg => @allIncPkg,
+      :development => @dev,
     }
-    open(RSRC_PATH +"/prefs.plist", "w") {|f| f.puts(prefs.to_plist) }
+    info = NSBundle.mainBundle.infoDictionary.mutableCopy()
+    info.setValue_forKey(@pref_name.stringValue,"CFBundleName")
+    info.writeToFile_atomically(NSBundle.mainBundle.bundlePath + "/Contents/Info.plist", false)
+    if @tmp_icon_path # There's a new icon
+      icon_path = RSRC_PATH + "/#{@tmp_icon_path.lastPathComponent()}"
+      FileManager.removeFileAtPath_handler(RSRC_PATH + "/#{@icon}", nil)
+      FileManager.copyPath_toPath_handler(@tmp_icon_path, RSRC_PATH, nil)
+      prefs[:icon] = @tmp_icon_path.lastPathComponent()
+      NSWorkspace.sharedWorkspace.objc_send :setIcon, @pref_icon.image,
+                                            :forFile, NSBundle.mainBundle.bundlePath,
+                                            :options, 0
+    end
+    open(RSRC_PATH + "/prefs.plist", "w") {|f| f.puts(prefs.to_plist) }
+    alert = NSAlert.alertWithMessageText_defaultButton_alternateButton_otherButton_informativeTextWithFormat(
+          "Changes Applied",
+          "OK",
+          nil,
+          nil,
+          "You must restart your app to see the changes")
+    alert.setIcon(NSImage.imageNamed("NSInfo"))
+    alert.beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo(@window, nil, nil, nil)
+    @pref_window.orderOut self
   end
 
   ib_action :open_preferences do |sender|
     getPreferences()
     @pref_name.setStringValue(@name)
     @pref_port.setStringValue(@port)
-    NSLog(RSRC_PATH + "/#{@icon}")
     @pref_icon.setImage NSImage.alloc.initWithContentsOfFile(RSRC_PATH + "/#{@icon}")
     @pref_window.orderFront(self)
   end
 
+  # (end)
+  
 end
 
 class NSTextView

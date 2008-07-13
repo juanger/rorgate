@@ -299,7 +299,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/bin/ruby;
-			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}-dev.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
+			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}-0.3b-#{Time.now.strftime(\"%F\")}.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
 		};
 		21BAF4600D62BE7F00C18B91 /* TAR Contents */ = {
 			isa = PBXShellScriptBuildPhase;
