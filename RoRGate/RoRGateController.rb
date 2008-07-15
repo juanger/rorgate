@@ -72,9 +72,9 @@ class RoRGateController < NSObject
 
   def create_preferences()
     prefs = { 
-      :name => @name.stringValue,
-      :path => @appPath.stringValue,
-      :port => (@port.stringValue.empty?)? "3000" : @port.stringValue,
+      :name => @name.stringValue.strip,
+      :path => @appPath.stringValue.strip,
+      :port => (@port.stringValue.empty?)? "3000" : @port.stringValue.strip,
       :icon => @iconPath.stringValue.lastPathComponent(),
       :allIncPkg => @isIncluded.intValue,
       :development => @isDevelopment.intValue }

@@ -73,7 +73,8 @@ class GateController < OSX::NSObject
 
   def runRoRApp()
     if @allIncPkg == 1
-      launchPath = NSBundle.mainBundle.pathForResource_ofType("rorApp",nil) + "/script/server"
+      launchPath = File.join(RSRC_PATH, "rorApp", "script", "server")
+      puts launchPath
     else
       launchPath = @appPath.stringByAppendingPathComponent("script/server")
     end
@@ -138,7 +139,7 @@ class GateController < OSX::NSObject
     if @allIncPkg != 1
       appPath = @appPath 
     else
-      appPath = NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent("rorApp")
+      appPath = File.join(BNDL_PATH, "rorApp")
     end
     `open -a textmate "#{appPath}"`
   end
@@ -178,7 +179,7 @@ class GateController < OSX::NSObject
       FileManager.copyPath_toPath_handler(@tmp_icon_path, icon_path, nil)
       prefs[:icon] = @tmp_icon_path.lastPathComponent()
       NSWorkspace.sharedWorkspace.objc_send :setIcon, @pref_icon.image,
-                                            :forFile, NSBundle.mainBundle.bundlePath,
+                                            :forFile, BNDL_PATH,
                                             :options, 0
     end
     
