@@ -29,6 +29,8 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>Gate</string>
+	<key>CFBundleName</key>
+	<string>Name</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.castech.RoRGate.Gate</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -12,6 +12,7 @@ require_framework 'WebKit'
 
 FileManager = NSFileManager.defaultManager
 RSRC_PATH = NSBundle.mainBundle.resourcePath
+BNDL_PATH = NSBundle.mainBundle.bundlePath
 
 class GateController < OSX::NSObject
 
@@ -20,6 +21,7 @@ class GateController < OSX::NSObject
   ib_outlet  :pref_window, :pref_name, :pref_port, :pref_icon
 
   def initialize()
+    # Inspector!!
     defaults = NSUserDefaults.standardUserDefaults
     appDefaults = {:WebKitDeveloperExtras => true}
     defaults.registerDefaults appDefaults
@@ -52,8 +54,12 @@ class GateController < OSX::NSObject
   #  Methods to Run RoR application (fold)
   ##
 
+  def setPaths()
+    
+  end
+
   def getPreferences()
-    prefsPlist = NSBundle.mainBundle.resourcePath.stringByAppendingPathComponent("prefs.plist")
+    prefsPlist = File.join(RSRC_PATH,"prefs.plist")
     @prefs = NSDictionary.dictionaryWithContentsOfFile(prefsPlist)  
 
     @name = @prefs[:name]
@@ -74,7 +80,7 @@ class GateController < OSX::NSObject
     @rorApp = NSTask.alloc.init
     @rorApp.setLaunchPath(launchPath)
     @rorApp.setCurrentDirectoryPath(@appPath)
-    @rorApp.setArguments(NSArray.arrayWithObjects("--port", @port, nil))
+    @rorApp.setArguments(["-e", "test", "--port",@port])
     if @dev == 1
       @rorApp.setStandardOutput(NSPipe.pipe)
       @rorApp.setStandardError(@rorApp.standardOutput)
@@ -157,32 +163,46 @@ class GateController < OSX::NSObject
   end
 
   ib_action :save_preferences do |sender|
-    prefs = { :name => @pref_name.stringValue,
-      :port => @pref_port.stringValue,
+    prefs = { :name => @pref_name.stringValue.strip,
+      :port => @pref_port.stringValue.strip,
       :icon => @icon,
       :path => @appPath,
       :allIncPkg => @allIncPkg,
       :development => @dev,
     }
-    info = NSBundle.mainBundle.infoDictionary.mutableCopy()
-    info.setValue_forKey(@pref_name.stringValue,"CFBundleName")
-    info.writeToFile_atomically(NSBundle.mainBundle.bundlePath + "/Contents/Info.plist", false)
-    if @tmp_icon_path # There's a new icon
+    
+    # New Icon
+    if !@tmp_icon_path.nil? && @icon != @tmp_icon_path.lastPathComponent()
       icon_path = RSRC_PATH + "/#{@tmp_icon_path.lastPathComponent()}"
       FileManager.removeFileAtPath_handler(RSRC_PATH + "/#{@icon}", nil)
-      FileManager.copyPath_toPath_handler(@tmp_icon_path, RSRC_PATH, nil)
+      FileManager.copyPath_toPath_handler(@tmp_icon_path, icon_path, nil)
       prefs[:icon] = @tmp_icon_path.lastPathComponent()
       NSWorkspace.sharedWorkspace.objc_send :setIcon, @pref_icon.image,
                                             :forFile, NSBundle.mainBundle.bundlePath,
                                             :options, 0
     end
+    
     open(RSRC_PATH + "/prefs.plist", "w") {|f| f.puts(prefs.to_plist) }
+    
+    # New Name
+    if @name != prefs[:name]
+      info = NSDictionary.dictionaryWithContentsOfFile(BNDL_PATH + "/Contents/Info.plist")
+      info.setValue_forKey(@pref_name.stringValue,"CFBundleName")
+      info.writeToFile_atomically(BNDL_PATH + "/Contents/Info.plist", false)
+      FileManager.movePath_toPath_handler(
+                BNDL_PATH,
+                BNDL_PATH.stringByDeletingLastPathComponent + "/#{prefs[:name]}.app", nil)
+      
+      BNDL_PATH = NSBundle.mainBundle.bundlePath.stringByDeletingLastPathComponent + "/#{prefs[:name]}.app"
+      RSRC_PATH = BNDL_PATH + "/Contents/Resources"
+    end
+    
     alert = NSAlert.alertWithMessageText_defaultButton_alternateButton_otherButton_informativeTextWithFormat(
-          "Changes Applied",
+          "Preferences Changed",
           "OK",
           nil,
           nil,
-          "You must restart your app to see the changes")
+          "You will need to restart your application to see the changes")
     alert.setIcon(NSImage.imageNamed("NSInfo"))
     alert.beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo(@window, nil, nil, nil)
     @pref_window.orderOut self
@@ -193,7 +213,7 @@ class GateController < OSX::NSObject
     @pref_name.setStringValue(@name)
     @pref_port.setStringValue(@port)
     @pref_icon.setImage NSImage.alloc.initWithContentsOfFile(RSRC_PATH + "/#{@icon}")
-    @pref_window.orderFront(self)
+    @pref_window.makeKeyAndOrderFront(self)
   end
 
   # (end)
