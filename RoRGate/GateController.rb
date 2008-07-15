@@ -81,7 +81,7 @@ class GateController < OSX::NSObject
     @rorApp = NSTask.alloc.init
     @rorApp.setLaunchPath(launchPath)
     @rorApp.setCurrentDirectoryPath(@appPath)
-    @rorApp.setArguments(["-e", "test", "--port",@port])
+    @rorApp.setArguments(["-e", "development", "--port",@port])
     if @dev == 1
       @rorApp.setStandardOutput(NSPipe.pipe)
       @rorApp.setStandardError(@rorApp.standardOutput)
