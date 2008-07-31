@@ -25,6 +25,8 @@ class GateController < OSX::NSObject
     defaults = NSUserDefaults.standardUserDefaults
     appDefaults = {:WebKitDeveloperExtras => true}
     defaults.registerDefaults appDefaults
+    @environment = "development"
+    @server = "mongrel"
   end
 
   def awakeFromNib()
@@ -74,23 +76,23 @@ class GateController < OSX::NSObject
   def runRoRApp()
     if @allIncPkg == 1
       launchPath = File.join(RSRC_PATH, "rorApp", "script", "server")
-      puts launchPath
     else
-      launchPath = @appPath.stringByAppendingPathComponent("script/server")
+      launchPath = File.join(@appPath, "script", "server")
     end
     @rorApp = NSTask.alloc.init
     @rorApp.setLaunchPath(launchPath)
     @rorApp.setCurrentDirectoryPath(@appPath)
-    @rorApp.setArguments(["-e", "development", "--port",@port])
+    @rorApp.setArguments([@server, "-e", @environment, "--port",@port])
     if @dev == 1
-      @rorApp.setStandardOutput(NSPipe.pipe)
-      @rorApp.setStandardError(@rorApp.standardOutput)
-      @rorApp.standardOutput.fileHandleForReading.readInBackgroundAndNotify
+      pipe = NSPipe.pipe
+      @rorApp.setStandardOutput(pipe)
+      @rorApp.setStandardError(pipe)
+      pipe.fileHandleForReading.readInBackgroundAndNotify
       nCenter = NSNotificationCenter.defaultCenter
       nCenter.objc_send :addObserver, self,
                         :selector, 'gotData',
                         :name, NSFileHandleReadCompletionNotification,
-                        :object, @rorApp.standardOutput.fileHandleForReading
+                        :object, pipe.fileHandleForReading
     end
     @rorApp.launch
   end
@@ -107,9 +109,11 @@ class GateController < OSX::NSObject
   ##
 
   def gotData(aNotification)
-    data = aNotification.userInfo.objectForKey(NSFileHandleNotificationDataItem)
-    data_string = NSString.alloc.objc_send( :initWithData, data,
-                                            :encoding, NSUTF8StringEncoding).to_s
+    data = aNotification.userInfo.objectForKey(
+      NSFileHandleNotificationDataItem)
+    data_string = NSString.alloc.objc_send(
+        :initWithData, data,
+        :encoding, NSUTF8StringEncoding).to_s
 
     if data.length != 0
       @server_out.appendString(data_string)
@@ -120,7 +124,8 @@ class GateController < OSX::NSObject
   end
 
   def configServerHUD()
-    @server_out.setBackgroundColor NSColor.colorWithDeviceWhite_alpha(0.12,0.84)
+    @server_out.setBackgroundColor(
+        NSColor.colorWithDeviceWhite_alpha(0.12,0.84))
     @server_out.setTextColor(NSColor.whiteColor)
     @server_out.setFont(NSFont.fontWithName_size('Monaco', 12.0))
   end
@@ -131,23 +136,31 @@ class GateController < OSX::NSObject
   #  Actions (fold)
   ##
 
-  ib_action :server_display do |sender|
-    @server_hud.display
+  ib_action :reset_server do |sender|
+    stopRoRApp()
+    runRoRApp()
   end
 
   ib_action :open_in_textmate do |sender|
     if @allIncPkg != 1
       appPath = @appPath 
     else
-      appPath = File.join(BNDL_PATH, "rorApp")
+      appPath = File.join(RSRC_PATH, "rorApp")
     end
     `open -a textmate "#{appPath}"`
   end
 
-  ib_action :reset_server do |sender|
-    stopRoRApp()
-    runRoRApp()
+  ib_action :open_in_terminal do |sender|
+    if @allIncPkg == 1
+      app_path = File.join(RSRC_PATH, "rorApp")
+    else
+      app_path = @appPath
+    end
+    command = %(do script with command \"cd \" & \"#{app_path}\")
+    `osascript -e 'tell application \"Terminal\" to #{command}'`
+    `osascript -e 'tell application \"Terminal\" to activate'`
   end
+  
 
   ib_action :select_icon do |sender|
     oPanel = NSOpenPanel.openPanel
@@ -155,11 +168,13 @@ class GateController < OSX::NSObject
     oPanel.setCanChooseDirectories false
 
     fileTypes = ["icns", "png", "jpg"]
-    result = oPanel.runModalForDirectory_file_types(NSHomeDirectory(), nil, fileTypes)
+    result = oPanel.runModalForDirectory_file_types(
+        NSHomeDirectory(), nil, fileTypes)
 
     if result == NSOKButton
       @tmp_icon_path = oPanel.filenames.objectAtIndex 0
-      @pref_icon.setImage NSImage.alloc.initWithContentsOfFile(@tmp_icon_path)
+      @pref_icon.setImage(
+          NSImage.alloc.initWithContentsOfFile(@tmp_icon_path))
     end
   end
 
@@ -173,8 +188,9 @@ class GateController < OSX::NSObject
     }
     
     # New Icon
-    if !@tmp_icon_path.nil? && @icon != @tmp_icon_path.lastPathComponent()
-      icon_path = RSRC_PATH + "/#{@tmp_icon_path.lastPathComponent()}"
+    if  !@tmp_icon_path.nil? &&
+        @icon != @tmp_icon_path.lastPathComponent()
+      icon_path = File.join(RSRC_PATH, @tmp_icon_path.lastPathComponent())
       FileManager.removeFileAtPath_handler(RSRC_PATH + "/#{@icon}", nil)
       FileManager.copyPath_toPath_handler(@tmp_icon_path, icon_path, nil)
       prefs[:icon] = @tmp_icon_path.lastPathComponent()
@@ -183,29 +199,39 @@ class GateController < OSX::NSObject
                                             :options, 0
     end
     
-    open(RSRC_PATH + "/prefs.plist", "w") {|f| f.puts(prefs.to_plist) }
+    open(File.join(RSRC_PATH, "prefs.plist"), "w") do |f| 
+      f.puts(prefs.to_plist)
+    end
     
     # New Name
     if @name != prefs[:name]
-      info = NSDictionary.dictionaryWithContentsOfFile(BNDL_PATH + "/Contents/Info.plist")
+      info = NSDictionary.dictionaryWithContentsOfFile(
+          File.join(BNDL_PATH, "Contents", "Info.plist"))
       info.setValue_forKey(@pref_name.stringValue,"CFBundleName")
-      info.writeToFile_atomically(BNDL_PATH + "/Contents/Info.plist", false)
+      info.writeToFile_atomically(
+          File.join(BNDL_PATH, "Contents", "Info.plist"), false)
       FileManager.movePath_toPath_handler(
                 BNDL_PATH,
-                BNDL_PATH.stringByDeletingLastPathComponent + "/#{prefs[:name]}.app", nil)
+                File.join(File.dirname(BNDL_PATH), "/#{prefs[:name]}.app"),
+                nil)
       
-      BNDL_PATH = NSBundle.mainBundle.bundlePath.stringByDeletingLastPathComponent + "/#{prefs[:name]}.app"
-      RSRC_PATH = BNDL_PATH + "/Contents/Resources"
+      BNDL_PATH = File.join(File.dirname(NSBundle.mainBundle.bundlePath),
+                            "#{prefs[:name]}.app")
+      RSRC_PATH = File.join(BNDL_PATH, "Contents", "Resources")
     end
     
-    alert = NSAlert.alertWithMessageText_defaultButton_alternateButton_otherButton_informativeTextWithFormat(
-          "Preferences Changed",
-          "OK",
-          nil,
-          nil,
+    alert = NSAlert.objc_send(
+          :alertWithMessageText, "Preferences Changed",
+          :defaultButton, "OK",
+          :alternateButton, nil,
+          :otherButton, nil,
+          :informativeTextWithFormat, 
           "You will need to restart your application to see the changes")
     alert.setIcon(NSImage.imageNamed("NSInfo"))
-    alert.beginSheetModalForWindow_modalDelegate_didEndSelector_contextInfo(@window, nil, nil, nil)
+    alert.objc_send(:beginSheetModalForWindow, @window,
+                    :modalDelegate, nil,
+                    :didEndSelector, nil,
+                    :contextInfo, nil)
     @pref_window.orderOut self
   end
 
@@ -213,7 +239,8 @@ class GateController < OSX::NSObject
     getPreferences()
     @pref_name.setStringValue(@name)
     @pref_port.setStringValue(@port)
-    @pref_icon.setImage NSImage.alloc.initWithContentsOfFile(RSRC_PATH + "/#{@icon}")
+    @pref_icon.setImage(
+      NSImage.alloc.initWithContentsOfFile(File.join(RSRC_PATH,@icon)))
     @pref_window.makeKeyAndOrderFront(self)
   end
 

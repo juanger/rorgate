@@ -6,6 +6,20 @@
 	objectVersion = 44;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		21C64EDB0E3E8FA7005B360E /* Package */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 21C64EDE0E3E8FC5005B360E /* Build configuration list for PBXAggregateTarget "Package" */;
+			buildPhases = (
+				21C64EE00E3E9009005B360E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Package;
+			productName = Package;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		2107CB7E0E1B5FA600CA43C3 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB7A0E1B5FA600CA43C3 /* MainMenu.nib */; };
 		2107CB7F0E1B5FA600CA43C3 /* MyDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB7C0E1B5FA600CA43C3 /* MyDocument.nib */; };
@@ -236,7 +250,6 @@
 				4DDCA70B0ACC9A6100E082CE /* Frameworks */,
 				21608B110E27099B00723F9F /* CopyFiles */,
 				21BAF47C0D62C6B600C18B91 /* Copy Gate Contents */,
-				219FA3490D66B86D00C96200 /* Create DMG */,
 			);
 			buildRules = (
 			);
@@ -263,6 +276,7 @@
 			targets = (
 				4DDCA7030ACC9A6100E082CE /* RoRGate */,
 				21BAF40B0D62A82A00C18B91 /* Gate */,
+				21C64EDB0E3E8FA7005B360E /* Package */,
 			);
 		};
 /* End PBXProject section */
@@ -295,22 +309,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		219FA3490D66B86D00C96200 /* Create DMG */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(CONFIGURATION_BUILD_DIR)/$(WRAPPER_NAME)",
-			);
-			name = "Create DMG";
-			outputPaths = (
-				"$(SRCROOT)/$(PROJECT_NAME).dmg",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/ruby;
-			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}-0.3b.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
-		};
 		21BAF4600D62BE7F00C18B91 /* TAR Contents */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,6 +341,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cp ${SRCROOT}/Contents.tgz ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}";
+		};
+		21C64EE00E3E9009005B360E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(CONFIGURATION_BUILD_DIR)/$(WRAPPER_NAME)",
+			);
+			outputPaths = (
+				"$(SRCROOT)/$(PROJECT_NAME).dmg",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}-0.3b.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -453,6 +466,27 @@
 			};
 			name = Release;
 		};
+		21C64EDC0E3E8FA7005B360E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Package;
+			};
+			name = Debug;
+		};
+		21C64EDD0E3E8FA7005B360E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = Package;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		4D7A7B580ABF745500C2D4C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -521,6 +555,15 @@
 			buildConfigurations = (
 				21BAF40F0D62A82B00C18B91 /* Debug */,
 				21BAF4100D62A82B00C18B91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		21C64EDE0E3E8FC5005B360E /* Build configuration list for PBXAggregateTarget "Package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21C64EDC0E3E8FA7005B360E /* Debug */,
+				21C64EDD0E3E8FA7005B360E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

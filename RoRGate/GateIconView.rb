@@ -26,12 +26,11 @@ class GateIconView < NSImageView
     # setImageAlignment(NSImageAlignCenter)
   end
 
-	def	mouseDown(event)
-		self.dragFile_fromRect_slideBack_event(
-				@rorGateController.gatePath, 
-				self.frame,
-				true,
-				event)
-	end
-	
+  def mouseDown(event)
+    self.dragFile_fromRect_slideBack_event(
+      @rorGateController.gatePath, 
+      self.frame,
+      true,
+      event)
+  end
 end
