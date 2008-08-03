@@ -26,7 +26,7 @@ class GateController < OSX::NSObject
     appDefaults = {:WebKitDeveloperExtras => true}
     defaults.registerDefaults appDefaults
     @environment = "development"
-    @server = "mongrel"
+    @server = ""
   end
 
   def awakeFromNib()
@@ -36,6 +36,7 @@ class GateController < OSX::NSObject
     else
       NSApp.mainMenu.removeItem @devMenu
     end
+    pipe_log() if @dev == 1
     runRoRApp()
     setMenuItems()
   end
@@ -83,17 +84,6 @@ class GateController < OSX::NSObject
     @rorApp.setLaunchPath(launchPath)
     @rorApp.setCurrentDirectoryPath(@appPath)
     @rorApp.setArguments([@server, "-e", @environment, "--port",@port])
-    if @dev == 1
-      pipe = NSPipe.pipe
-      @rorApp.setStandardOutput(pipe)
-      @rorApp.setStandardError(pipe)
-      pipe.fileHandleForReading.readInBackgroundAndNotify
-      nCenter = NSNotificationCenter.defaultCenter
-      nCenter.objc_send :addObserver, self,
-                        :selector, 'gotData',
-                        :name, NSFileHandleReadCompletionNotification,
-                        :object, pipe.fileHandleForReading
-    end
     @rorApp.launch
   end
 
@@ -108,15 +98,33 @@ class GateController < OSX::NSObject
   #  Server Output (fold)
   ##
 
+  def pipe_log
+    tail = NSTask.alloc.init
+    tail.setLaunchPath("/usr/bin/tail")
+    log = File.join(@appPath, "log", "#{@environment}.log")
+    tail.setArguments(["-f", "-c", "0", log])
+    pipe = NSPipe.pipe
+    tail.standardOutput = pipe
+    #tail.standardError = pipe
+    pipe.fileHandleForReading.readInBackgroundAndNotify
+    nCenter = NSNotificationCenter.defaultCenter
+    nCenter.objc_send :addObserver, self,
+                      :selector, 'gotData',
+                      :name, NSFileHandleReadCompletionNotification,
+                      :object, pipe.fileHandleForReading
+    tail.launch
+  end
+
   def gotData(aNotification)
     data = aNotification.userInfo.objectForKey(
       NSFileHandleNotificationDataItem)
-    data_string = NSString.alloc.objc_send(
-        :initWithData, data,
-        :encoding, NSUTF8StringEncoding).to_s
 
     if data.length != 0
+      data_string = NSString.alloc.objc_send(
+          :initWithData, data,
+          :encoding, NSUTF8StringEncoding).to_s
       @server_out.appendString(data_string)
+      #@rorApp.standardOutput.fileHandleForReading.readInBackgroundAndNotify
     else
       stopRoRApp()
     end
@@ -135,6 +143,15 @@ class GateController < OSX::NSObject
   ##
   #  Actions (fold)
   ##
+  
+  ib_action :change_env do |sender|
+    @environment = sender.title.downcase
+    stopRoRApp()
+    runRoRApp()
+    sender.menu.itemArray.each { |item| item.state = NSOffState}
+    sender.state = NSOnState
+  end
+  
 
   ib_action :reset_server do |sender|
     stopRoRApp()
@@ -160,7 +177,6 @@ class GateController < OSX::NSObject
     `osascript -e 'tell application \"Terminal\" to #{command}'`
     `osascript -e 'tell application \"Terminal\" to activate'`
   end
-  
 
   ib_action :select_icon do |sender|
     oPanel = NSOpenPanel.openPanel

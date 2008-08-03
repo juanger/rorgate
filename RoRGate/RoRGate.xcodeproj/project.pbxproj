@@ -26,8 +26,6 @@
 		2107CB810E1B5FC100CA43C3 /* MyDocument.rb in Resources */ = {isa = PBXBuildFile; fileRef = 2107CB800E1B5FC100CA43C3 /* MyDocument.rb */; };
 		21608B090E27092600723F9F /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21608B080E27092600723F9F /* RubyCocoa.framework */; };
 		21608B0A0E27092600723F9F /* RubyCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21608B080E27092600723F9F /* RubyCocoa.framework */; };
-		21608B120E2709A500723F9F /* RubyCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21608B080E27092600723F9F /* RubyCocoa.framework */; };
-		21608B1B0E270A5800723F9F /* RubyCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21608B080E27092600723F9F /* RubyCocoa.framework */; };
 		21BAF41A0D62A8D400C18B91 /* RoRGate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4180D62A8D400C18B91 /* RoRGate.nib */; };
 		21BAF41F0D62A91500C18B91 /* GateController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF41E0D62A91500C18B91 /* GateController.rb */; };
 		21BAF4220D62A92500C18B91 /* GateIconView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF4200D62A92500C18B91 /* GateIconView.rb */; };
@@ -36,6 +34,7 @@
 		21BAF4260D62A99C00C18B91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		21BAF4270D62A9A900C18B91 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		21BAF44C0D62B32900C18B91 /* prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21BAF44B0D62B32900C18B91 /* prefs.plist */; };
+		21D003710E43C8C700C91797 /* Inspector.png in Resources */ = {isa = PBXBuildFile; fileRef = 21D003700E43C8C700C91797 /* Inspector.png */; };
 		4DDCA7080ACC9A6100E082CE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = E8F5E25803AEB7C803A81C6F /* rb_main.rb */; };
 		4DDCA70A0ACC9A6100E082CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		4DDCA70C0ACC9A6100E082CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -52,26 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		21608B110E27099B00723F9F /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				21608B120E2709A500723F9F /* RubyCocoa.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21608B1D0E270A7600723F9F /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				21608B1B0E270A5800723F9F /* RubyCocoa.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21CB94F70E2C8B830025C1AC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -88,7 +67,7 @@
 		2107CB7B0E1B5FA600CA43C3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2107CB7D0E1B5FA600CA43C3 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MyDocument.nib; sourceTree = "<group>"; };
 		2107CB800E1B5FC100CA43C3 /* MyDocument.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MyDocument.rb; sourceTree = "<group>"; };
-		21608B080E27092600723F9F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = ../../../../../Library/Frameworks/RubyCocoa.framework; sourceTree = SOURCE_ROOT; };
+		21608B080E27092600723F9F /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = ../../../../../System/Library/Frameworks/RubyCocoa.framework; sourceTree = SOURCE_ROOT; };
 		21BAF40C0D62A82A00C18B91 /* Gate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BAF40E0D62A82A00C18B91 /* Gate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gate-Info.plist"; sourceTree = "<group>"; };
 		21BAF4190D62A8D400C18B91 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/RoRGate.nib; sourceTree = "<group>"; };
@@ -96,6 +75,7 @@
 		21BAF4200D62A92500C18B91 /* GateIconView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = GateIconView.rb; sourceTree = "<group>"; };
 		21BAF4210D62A92500C18B91 /* RoRGateController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = RoRGateController.rb; sourceTree = "<group>"; };
 		21BAF44B0D62B32900C18B91 /* prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = prefs.plist; sourceTree = "<group>"; };
+		21D003700E43C8C700C91797 /* Inspector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inspector.png; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -178,6 +158,7 @@
 		29B97314FDCFA39411CA2CEA /* RoRGate */ = {
 			isa = PBXGroup;
 			children = (
+				21D003700E43C8C700C91797 /* Inspector.png */,
 				21BAF4140D62A85A00C18B91 /* Resources */,
 				21BAF4130D62A85500C18B91 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -227,7 +208,6 @@
 				21BAF4080D62A82A00C18B91 /* Resources */,
 				21BAF4090D62A82A00C18B91 /* Sources */,
 				21BAF40A0D62A82A00C18B91 /* Frameworks */,
-				21608B1D0E270A7600723F9F /* CopyFiles */,
 				21CB94F70E2C8B830025C1AC /* CopyFiles */,
 				21BAF4600D62BE7F00C18B91 /* TAR Contents */,
 			);
@@ -248,7 +228,6 @@
 				4DDCA7090ACC9A6100E082CE /* Sources */,
 				4DDCA7050ACC9A6100E082CE /* Resources */,
 				4DDCA70B0ACC9A6100E082CE /* Frameworks */,
-				21608B110E27099B00723F9F /* CopyFiles */,
 				21BAF47C0D62C6B600C18B91 /* Copy Gate Contents */,
 			);
 			buildRules = (
@@ -292,6 +271,7 @@
 				2107CB7E0E1B5FA600CA43C3 /* MainMenu.nib in Resources */,
 				2107CB7F0E1B5FA600CA43C3 /* MyDocument.nib in Resources */,
 				2107CB810E1B5FC100CA43C3 /* MyDocument.rb in Resources */,
+				21D003710E43C8C700C91797 /* Inspector.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/bin/ruby;
-			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}-0.3b.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/#{ENV['WRAPPER_NAME']}\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
+			shellScript = "image_name = \"#{ENV['PROJECT_NAME']}-0.3b.dmg\"\nif File.exists? image_name\n\tsystem(\"rm \\\"#{image_name}\\\"\")\nend\nsystem(\"hdiutil create -srcfolder \\'#{ENV['CONFIGURATION_BUILD_DIR']}/RoRGate.app\\' -volname #{ENV['PROJECT_NAME']} \\'#{image_name}\\'\")\nsystem(\"say build done\")";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -13,7 +13,9 @@ require_framework 'WebKit'
 
 class MyDocument < OSX::NSDocument
 
-  ib_outlets :webView, :progress, :url, :reload, :inspect
+  ib_outlets :webView, :progress
+  ib_outlets :url, :reload, :inspect, :home
+  
   attr_reader :webView, :title
   
   def windowNibName
@@ -45,7 +47,6 @@ class MyDocument < OSX::NSDocument
     @name = @prefs[:name]
     @port = @prefs[:port]
     @appURL = "http://0.0.0.0:#{@port}"
-    #@mainWindow.setTitle(@name)
   end
 
   def isDocumentEdited
@@ -72,6 +73,7 @@ class MyDocument < OSX::NSDocument
     if frame == sender.mainFrame then
       @webView.window.setTitle("Loading...")
       @progress.startAnimation(self)
+      @url.stringValue = frame.provisionalDataSource.request.URL.absoluteString
     end
   end
   
@@ -107,6 +109,7 @@ class MyDocument < OSX::NSDocument
     @toolbar = NSToolbar.alloc.initWithIdentifier "WebToolbar"
     @toolbar.displayMode = NSToolbarDisplayModeIconOnly
     @toolbar.showsBaselineSeparator = false
+    #@toolbar.sizeMode = NSToolbarSizeModeSmall
     @toolbar.delegate = self
     @webView.window.setToolbar @toolbar
   end
@@ -127,18 +130,26 @@ class MyDocument < OSX::NSDocument
       item = NSToolbarItem.alloc.initWithItemIdentifier(itemIdent)
       item.target = self
       item.view = @inspect
+      item.image = NSImage.alloc.initWithContentsOfFile(NSBundle.mainBundle.pathForResource_ofType("Inspector", "png"))
+      # item.maxSize = NSSizeMake(14,13)
       item.action = "inspect"
+    when "Home"
+      item = NSToolbarItem.alloc.initWithItemIdentifier(itemIdent)
+      item.target = self
+      item.view = @home
+      #item.view.image = NSImage.imageNamed("NSHome")
+      item.action = "go_home"
     end
     item
   end
 
   def toolbarDefaultItemIdentifiers(toolbar)
-    [ "Reload", "URL",
+    [ "Home", "Reload", "URL",
       NSToolbarFlexibleSpaceItemIdentifier, "Inspect"]
   end
   
   def toolbarAllowedItemIdentifiers(toolbar)
-    ["Reload", "URL", NSToolbarFlexibleSpaceItemIdentifier, "Inspect"]
+    ["Reload", "URL", NSToolbarFlexibleSpaceItemIdentifier, "Inspect", "Home"]
   end
   
   ib_action :load_url do |sender|
